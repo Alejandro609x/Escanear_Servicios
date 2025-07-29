@@ -155,16 +155,3 @@ sudo python3 escaner_servicios.py https://dominio.com -Og salida.txt -GC
 ```
 
 ---
-
-## 📜 Licencia
-
-Este proyecto está bajo licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
----
-
-## ✍️ Autor
-
-* **Alejandro Salazae Luis**
-* GitHub: [@Alejandro609x](https://github.com/Alejandro609x)
-
----
