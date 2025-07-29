@@ -144,6 +144,8 @@ sudo python3 escaner_servicios.py https://dominio.com -Og salida.txt -GC
 
 ## 📷 Ejemplo de salida
 
+![Resultado de nmap -sn](/Imagenes/Resultado.png)
+
 ```
 🔗 URL: https://example.com
 🌐 Dominio: example.com
