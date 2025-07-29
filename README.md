@@ -1,133 +1,172 @@
 ---
 
-## 🔍 Escáner Automático de Red con Nmap y Resolución de IPs
+# 🔍 Escáner Automático de Servicios y Puertos con Nmap
 
-Este script en Python analiza una URL para extraer su dominio, obtener las IPs asociadas (públicas y privadas), verificar conectividad básica, y realizar escaneos de puertos/servicios con **Nmap**, todo de forma automatizada.
-
----
-
-### 🧠 Características principales
-
-* 🌐 **Extracción de dominio** desde una URL.
-* 🧠 **Resolución de IPs** (DNS del sistema y servidor público con `dig`).
-* 🧪 **Clasificación de IPs**: clase A/B/C, pública o privada.
-* 📡 **Verificación de conectividad** vía `ping` y conexión HTTPS (puerto 443).
-* 🚀 **Escaneo de puertos y servicios** con Nmap (`-p-`, `-sS`, `-sCV`).
-* 💾 **Opciones para guardar salida** parseada (`-Og`) y cruda (`-GC`) en archivos.
-* 🛠️ Compatible con sistemas **Windows, Linux y macOS** (requiere adaptaciones mínimas en Windows).
-* 📋 Interfaz de línea de comandos con `argparse`.
+Este repositorio contiene un **script avanzado de análisis de red** en Python que permite escanear servicios y puertos abiertos asociados a una URL o dominio, resolviendo todas las IPs (privadas y públicas) y ejecutando un análisis automatizado con **Nmap**.
 
 ---
 
-## ⚠️ Advertencia Legal
+## 🎯 Objetivo del proyecto
 
-> Este script ejecuta escaneos de red que pueden ser considerados intrusivos.
-> **Úsalo únicamente en sistemas de tu propiedad o con autorización explícita.**
+Este script fue creado con el propósito de:
 
----
+* 🔍 Analizar automáticamente **una URL o dominio**
+* 🌐 Resolver **todas las IPs asociadas** (públicas y privadas)
+* 🧠 Clasificar IPs según su **clase (A/B/C)** y si son **públicas o privadas**
+* 📶 Verificar la **conectividad** de cada IP (Ping y conexión HTTPS)
+* 🔎 Realizar escaneos automáticos con **Nmap** para:
 
-## 📦 Requisitos
+  * Detectar **puertos abiertos** (`-p- --open -sS`)
+  * Identificar **servicios y versiones** (`-sCV`)
+* 💾 Permitir guardar la salida **parseada** y **cruda** en archivos
 
-### General
-
-* Python 3.8 o superior
-* Acceso a internet
-* Permisos de administrador/root (especialmente en Linux)
-* Herramientas instaladas:
-
-  * [`nmap`](https://nmap.org/) (debe estar disponible en el PATH)
-  * [`dig`](https://bind9.readthedocs.io/en/latest/dig.html) (solo en Linux/macOS)
-
-### Windows
-
-* Visual Studio Code (VSCode)
-* Extensión de Python instalada en VSCode
-* Instalar `nmap` para Windows desde: [https://nmap.org/download.html](https://nmap.org/download.html)
-
-  * Agrega la carpeta de instalación (`C:\Program Files (x86)\Nmap`) a tu **PATH del sistema**
-* `dig` no está disponible por defecto en Windows → el script aún funciona, pero resolverá IPs solo mediante `socket.gethostbyname_ex`.
+> Este script es ideal para **auditorías internas de red**, **reconocimiento pasivo y activo**, y **pruebas de seguridad autorizadas**.
 
 ---
 
-## ▶️ Cómo usarlo en **Windows con Visual Studio Code**
+## ⚠️ Aviso legal
 
-1. **Clona el repositorio** o descarga el archivo `escaner_auto.py`.
+> **Este script realiza escaneos de red y servicios.**
+> Úsalo **únicamente en sistemas de tu propiedad** o con autorización explícita.
+> No nos hacemos responsables del uso indebido.
+
+---
+
+## 📥 Cómo descargarlo y usarlo
+
+### 🔗 Repositorio oficial:
+
+**[https://github.com/Alejandro609x/Escanear\_Servicios](https://github.com/Alejandro609x/Escanear_Servicios)**
+
+---
+
+### ✅ Instrucciones paso a paso
+
+#### 1. Descargar el repositorio
+
+**Opción A: Clonar con Git**
 
 ```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
+git clone https://github.com/Alejandro609x/Escanear_Servicios.git
+cd Escanear_Servicios
 ```
 
-2. **Abre la carpeta en VSCode**
-   Selecciona `Archivo > Abrir carpeta...` y elige el directorio donde está el script.
+**Opción B: Descargar como ZIP**
 
-3. **Abre una terminal integrada**
-   `Ctrl + ñ` o `Terminal > Nueva terminal`.
+1. Ve a [https://github.com/Alejandro609x/Escanear\_Servicios](https://github.com/Alejandro609x/Escanear_Servicios)
+2. Haz clic en el botón verde `Code` > `Download ZIP`
+3. Extrae el archivo ZIP
+4. Abre la carpeta `Escanear_Servicios`
 
-4. **Ejecuta el script** con Python. Por ejemplo:
+---
+
+#### 2. Requisitos
+
+* ✅ Python 3.8 o superior
+* ✅ `nmap` instalado y en el PATH
+* 🔎 (Linux/macOS) `dig` instalado (opcional pero recomendado)
+* ⚠️ Linux/macOS: Ejecutar como `root` para escaneo SYN (`-sS`)
+* 💻 Windows: Ejecutar como administrador para evitar restricciones
+
+---
+
+### 💻 Uso en **Windows con Visual Studio Code**
+
+1. Instala Python desde [python.org](https://www.python.org/downloads/)
+2. Instala [Visual Studio Code](https://code.visualstudio.com/) + extensión de Python
+3. Descarga o clona el repositorio
+4. Abre la carpeta `Escanear_Servicios` en VSCode
+5. Abre una terminal (`Ctrl + ñ`)
+6. Ejecuta:
 
 ```bash
-python escaner_auto.py https://example.com -Og salida.txt -GC
+python escaner_servicios.py https://ejemplo.com -Og salida.txt -GC
 ```
 
 ---
 
-## 🛠️ Opciones de ejecución
+### 🧪 Ejecución general
 
 ```bash
-python escaner_auto.py [URL] [opciones]
+python escaner_servicios.py https://dominio.com -Og salida.txt -GC
 ```
 
-### Parámetros:
+En Linux/macOS:
 
-| Opción            | Descripción                                                 |
-| ----------------- | ----------------------------------------------------------- |
-| `url`             | URL objetivo, por ejemplo `https://example.com/login`       |
-| `-a`, `--auto`    | Modo automático (omite interacción por consola)             |
-| `-Og archivo.txt` | Guarda salida **parseada** en archivo de texto              |
-| `-GC`             | Guarda salida **cruda** del escaneo Nmap en `info_nmap.txt` |
+```bash
+sudo python3 escaner_servicios.py https://dominio.com -Og salida.txt -GC
+```
 
 ---
 
-## 🧪 Ejemplo de ejecución
+### 📌 Argumentos disponibles
 
-```bash
-python escaner_auto.py https://example.com -Og resultado.txt -GC
-```
+| Opción            | Descripción                                                       |
+| ----------------- | ----------------------------------------------------------------- |
+| `url`             | URL o dominio a analizar (ej. `https://example.com`)              |
+| `-a`, `--auto`    | Modo automático (omite la interacción por consola)                |
+| `-Og archivo.txt` | Guarda la **salida parseada** del análisis en un archivo de texto |
+| `-GC`             | Guarda la **salida cruda** de Nmap en `info_nmap.txt`             |
+
+---
+
+### 📁 Archivos generados
+
+| Archivo         | Descripción                                                |
+| --------------- | ---------------------------------------------------------- |
+| `salida.txt`    | Resultado limpio y organizado del análisis (si usas `-Og`) |
+| `info_nmap.txt` | Resultado crudo de Nmap (si usas `-GC`)                    |
+
+---
+
+## 🧠 ¿Qué hace exactamente el script?
+
+### Paso a paso:
+
+1. 📥 **Extrae el dominio** de una URL
+2. 🌐 **Resuelve las IPs** del dominio:
+
+   * Por métodos locales (DNS del sistema)
+   * Por `dig` con servidor público (8.8.8.8)
+3. 🧩 **Clasifica cada IP**:
+
+   * Por clase (A, B, C)
+   * Por tipo (Pública o Privada)
+4. 📡 **Verifica conectividad**:
+
+   * Hace ping a la IP
+   * Intenta conexión al puerto 443 (HTTPS)
+5. 🚀 **Escanea la IP con Nmap**:
+
+   * Encuentra todos los puertos abiertos (`-p- --open -sS`)
+   * Detecta servicios y versiones (`-sCV`)
+6. 📝 **Muestra y guarda los resultados** si se indicaron los parámetros `-Og` y `-GC`
+
+---
+
+## 📷 Ejemplo de salida
 
 ```
 🔗 URL: https://example.com
 🌐 Dominio: example.com
 📡 IPs encontradas: 93.184.216.34
  - 🧠 IP: 93.184.216.34 → Clase: Clase A, Tipo: Pública, Origen: Pública, Conectividad: Ping, HTTPS
+
+--- INICIANDO ESCANEOS AUTOMÁTICOS DE SERVICIOS CON NMAP ---
 ...
 ```
 
 ---
 
-## 📁 Archivos generados
-
-| Archivo         | Contenido                      |
-| --------------- | ------------------------------ |
-| `resultado.txt` | Salida interpretada y legible  |
-| `info_nmap.txt` | Salida cruda generada por Nmap |
-
----
-
-## ❓ Preguntas comunes
-
-### ¿Puedo ejecutar este script en Windows sin permisos de administrador?
-
-Sí, aunque ciertos escaneos (como `-sS`) pueden requerir permisos elevados o fallar si Nmap no tiene privilegios suficientes.
-
-### ¿Qué pasa si no tengo `dig` en Windows?
-
-El script sigue funcionando, pero solo podrá resolver IPs usando métodos locales (`socket.gethostbyname_ex`).
-
----
-
 ## 📜 Licencia
 
-Distribuido bajo la licencia MIT. Consulta el archivo `LICENSE` para más información.
+Este proyecto está bajo licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+---
+
+## ✍️ Autor
+
+* **Alejandro Salazae Luis**
+* GitHub: [@Alejandro609x](https://github.com/Alejandro609x)
 
 ---
