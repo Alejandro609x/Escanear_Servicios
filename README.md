@@ -146,14 +146,4 @@ sudo python3 escaner_servicios.py https://dominio.com -Og salida.txt -GC
 
 ![Resultado de nmap -sn](/Imagenes/Resultado.png)
 
-```
-🔗 URL: https://example.com
-🌐 Dominio: example.com
-📡 IPs encontradas: 93.184.216.34
- - 🧠 IP: 93.184.216.34 → Clase: Clase A, Tipo: Pública, Origen: Pública, Conectividad: Ping, HTTPS
-
---- INICIANDO ESCANEOS AUTOMÁTICOS DE SERVICIOS CON NMAP ---
-...
-```
-
 ---
