@@ -1,5 +1,3 @@
----
-
 # 🔍 Escáner Automático de Servicios y Puertos con Nmap
 
 Este repositorio contiene un **script avanzado de análisis de red** en Python que permite escanear servicios y puertos abiertos asociados a una URL o dominio, resolviendo todas las IPs (privadas y públicas) y ejecutando un análisis automatizado con **Nmap**.
